@@ -1,6 +1,7 @@
 import boto3
 import pandas as pd
 from pprint import pprint
+import csv
 
 def files(bucket, *folders):
     s3 = boto3.resource('s3')
@@ -19,14 +20,17 @@ def files(bucket, *folders):
 
     return filenames
 info = files('data8-engineering-project', 'SpartaDays' )
-s3_client = boto3.client('s3')
+
+s3 = boto3.client('s3')
 for x in info.values():
     for y in range(0,len(x)):
         name = x[y] # gets the individual files names
-        data = s3_client.get_object(Bucket='data8-engineering-project',
-                                            Key = 'SpartaDays/' + name)
-        df1 = pd.read_csv(data['Body'], sep=" ", header=None)
-        df1
+        bucket='data8-engineering-project'
+        key = 'SpartaDays/' + name
+        response = s3.get_object(Bucket=bucket, Key=key)
+        file = response["Body"]
+        df = pd.read_csv(file, header=1, delimiter="\t", low_memory=False)
+        print(df)
 
 
 
