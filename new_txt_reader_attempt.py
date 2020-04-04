@@ -29,9 +29,10 @@ for x in info.values():
         key = 'SpartaDays/' + name
         response = s3.get_object(Bucket=bucket, Key=key)
         file = response["Body"]
-        df = pd.read_csv(file, header=1, delimiter="\t", low_memory=False)
+        df = pd.read_csv(file, sep=";|/|:|,|-", header=None, delimiter="\t", low_memory=False, skiprows=3)
         print(df)
 
+        break
 
 
 ############
