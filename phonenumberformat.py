@@ -1,5 +1,6 @@
 import boto3
 import pandas as pd
+import numpy as np
 
 def dataframe(bucket, folder):
     s3_client = boto3.client('s3')
@@ -19,9 +20,11 @@ def dataframe(bucket, folder):
 
 def phonenoformat(bucket, folder, col):
     df = dataframe(bucket, folder)
+    df[col]=df[col].astype(str)
     chars = ' ()-'
     for c in chars:
         df[col] = df[col].str.replace(c,'')
+    df.replace('nan', np.nan, inplace=True)
     return df
 
 print(phonenoformat('data8-engineering-project', 'Talent','phone_number').phone_number)
