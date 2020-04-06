@@ -1,38 +1,46 @@
 from files_to_dataframe import FileToDF
 import pandas as pd
+from json_reader import ReadTransformJson
+
 
 def strengths():
-    file = FileToDF('data8-engineering-project', 'TransformedFiles')
-    df = file.dataframecsv()
-    strength_list = []
-    chars = ["'","[", "]"]
-    for row in df.strengths:
-        for c in chars:
-            row = row.replace(c,'')
-        row = row.split(',')
-        for strength in row:
-            strength = strength.strip()
-            if strength not in strength_list:
-                strength_list.append(strength)
-
+    strength_list= extract('strengths')
     df = pd.DataFrame(strength_list)
     return df
 
 
 def weaknesses():
+    weakness_list = extract('weaknesses')
+    df = pd.DataFrame(weakness_list)
+    return df
+
+
+def extract(y):
     file = FileToDF('data8-engineering-project', 'TransformedFiles')
     df = file.dataframecsv()
-    weakness_list = []
-    chars = ["'", "[", "]"]
-    for row in df.weaknesses:
+    list1 = []
+    for row in df[y]:
+        chars = ["'", "[", "]"]
         for c in chars:
             row = row.replace(c, '')
         row = row.split(',')
-        for weakness in row:
-            weakness = weakness.strip()
-            if weakness not in weakness_list:
-                weakness_list.append(weakness)
+        for x in row:
+            x = x.strip()
+            if x not in list1:
+                list1.append(x)
+    return list1
 
-    df = pd.DataFrame(weakness_list)
+
+def tech():
+    file = ReadTransformJson('data8-engineering-project', 'Interview Notes')
+    df = file.json_reader('Interview Notes') # uses json reader so can access technologies as a dictionary but will take longer to run
+    tech_list = []
+    for row in df.technologies:
+        for tech in row:
+            tech = tech['language']
+            if tech not in tech_list:
+                tech_list.append(tech)
+    df = pd.DataFrame(tech_list)
     return df
+
 
