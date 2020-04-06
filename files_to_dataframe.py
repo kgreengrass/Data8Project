@@ -70,7 +70,7 @@ class FileToDF:
                 else:
                     pass
         df = pd.concat(df_list)  # creates one dataframe for all the files that have been processed above
-        df.columns = ["full_name", 'col1', 'psychometrics', 'psycho.max', 'col2', 'presentation', 'present.max',
+        df.columns = ["name", 'col1', 'psychometrics', 'psycho.max', 'col2', 'presentation', 'present.max',
                       'academy', 'date']
         df.drop(['col1', 'col2'], axis=1, inplace=True)
         df[['psychometrics', 'psycho.max', 'presentation', 'present.max']] = df[
