@@ -18,4 +18,3 @@ def dataframe(bucket, folder):
     return df
 
 
-print(dataframe('data8-engineering-project', 'Talent'))
