@@ -5,14 +5,14 @@ USE SpartaDB;
 -- Academies table
 DROP TABLE IF EXISTS Academies
 CREATE TABLE Academies(
-	academy_ID INT NOT NULL IDENTITY PRIMARY KEY,
+	academy_ID INT NOT NULL PRIMARY KEY,
 	academy_name VARCHAR(20),
 );
 
 -- Trainers table
 DROP TABLE IF EXISTS Trainers
 CREATE TABLE Trainers(
-	trainer_ID INT NOT NULL IDENTITY PRIMARY KEY,
+	trainer_ID INT NOT NULL PRIMARY KEY,
 	first_name VARCHAR(30),
 	last_name VARCHAR(30)
 );
@@ -20,14 +20,14 @@ CREATE TABLE Trainers(
 -- Course_Type table
 DROP TABLE IF EXISTS Course_Types
 CREATE TABLE Course_Types(
-	course_type_ID INT NOT NULL IDENTITY PRIMARY KEY,
+	course_type_ID INT NOT NULL PRIMARY KEY,
 	course_name VARCHAR(20)
 );
 
 -- Courses table
 DROP TABLE IF EXISTS Courses
 CREATE TABLE Courses(
-	course_ID INT NOT NULL IDENTITY PRIMARY KEY,
+	course_ID INT NOT NULL PRIMARY KEY,
 	course_type_ID INT NOT NULL FOREIGN KEY REFERENCES Course_Types(course_type_ID),
 	course_number INT,
 	course_length_weeks INT,
@@ -38,7 +38,7 @@ CREATE TABLE Courses(
 -- Talent Team table
 DROP TABLE IF EXISTS Talent_Team
 CREATE TABLE Talent_Team(
-	talent_person_ID INT NOT NULL IDENTITY PRIMARY KEY,
+	talent_person_ID INT NOT NULL PRIMARY KEY,
 	first_name VARCHAR(30),
 	last_name VARCHAR(30),
 );
@@ -46,7 +46,7 @@ CREATE TABLE Talent_Team(
 -- Candidates table
 DROP TABLE IF EXISTS Candidates
 CREATE TABLE Candidates (
-	candidate_ID INT NOT NULL IDENTITY PRIMARY KEY,
+	candidate_ID INT NOT NULL PRIMARY KEY,
 	first_name VARCHAR(30), -- in original separete the full name column to get this
 	last_name VARCHAR(40),
 	gender VARCHAR(10),
@@ -67,21 +67,21 @@ CREATE TABLE Candidates (
 -- Technologies table
 DROP TABLE IF EXISTS Technologies
 CREATE TABLE Technologies(
-	technology_ID INT NOT NULL IDENTITY PRIMARY KEY,
+	technology_ID INT NOT NULL PRIMARY KEY,
 	technology_name VARCHAR(40)
 );
 
 -- Strenghths table
 DROP TABLE IF EXISTS Strengths
 CREATE TABLE Strengths(
-	strength_ID INT NOT NULL IDENTITY PRIMARY KEY,
+	strength_ID INT NOT NULL PRIMARY KEY,
 	strength_name VARCHAR(40)
 );
 
 -- Weaknesses table
 DROP TABLE IF EXISTS Weaknesses
 CREATE TABLE Weaknesses(
-	weakness_ID INT NOT NULL IDENTITY PRIMARY KEY,
+	weakness_ID INT NOT NULL PRIMARY KEY,
 	weakness_name VARCHAR(40)
 );
 
