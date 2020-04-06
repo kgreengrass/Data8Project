@@ -14,9 +14,10 @@ class FileToDF:
     def filenames(self):
         content_list = []
         for index, record in enumerate(self.file_names_dict[self.folder]):
-            contents = self.s3_client.list_objects_v2(Bucket=self.bucket,
-                                            Prefix=f'{self.folder}/{record}')['Contents']
-            content_list.append(contents)  # creates a list of all files in folder (even if over 1000)
+            if record != '':  # stops reading twice from certain folders if there is a blank file that doesn't show in s3
+                contents = self.s3_client.list_objects_v2(Bucket=self.bucket,
+                                                Prefix=f'{self.folder}/{record}')['Contents']
+                content_list.append(contents)  # creates a list of all files in folder (even if over 1000)
         return content_list
 
 
