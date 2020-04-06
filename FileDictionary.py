@@ -1,5 +1,4 @@
 import boto3
-from pprint import pprint
 
 def files(bucket, *folders):
     s3 = boto3.resource('s3')
@@ -19,5 +18,5 @@ def files(bucket, *folders):
     return filenames
 
 
-pprint(files('data8-engineering-project', 'Academy', 'Interview Notes','SpartaDays','Talent' ))
+
 
