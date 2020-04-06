@@ -1,17 +1,22 @@
 from files_to_dataframe import FileToDF
 import pandas as pd
 from json_reader import ReadTransformJson
+import numpy as np
 
 
 def strengths():
     strength_list= extract('strengths')
     df = pd.DataFrame(strength_list)
+    df.columns=['StrengthName']
+    df['StrengthID'] = np.arange(len(df))
     return df
 
 
 def weaknesses():
     weakness_list = extract('weaknesses')
     df = pd.DataFrame(weakness_list)
+    df.columns=['WeaknessName']
+    df['WeaknessID'] = np.arange(len(df))
     return df
 
 
@@ -41,6 +46,8 @@ def tech():
             if tech not in tech_list:
                 tech_list.append(tech)
     df = pd.DataFrame(tech_list)
+    df.columns=['TechName']
+    df['TechID'] = np.arange(len(df))
     return df
 
 
