@@ -17,12 +17,21 @@ CREATE TABLE Trainers(
 	last_name VARCHAR(30)
 );
 
+-- Course_Type table
+DROP TABLE IF EXISTS Course_Types
+CREATE TABLE Course_Types(
+	course_type_ID INT NOT NULL IDENTITY PRIMARY KEY,
+	course_name VARCHAR(20)
+);
+
 -- Courses table
 DROP TABLE IF EXISTS Courses
 CREATE TABLE Courses(
 	course_ID INT NOT NULL IDENTITY PRIMARY KEY,
-	course_name VARCHAR(20),
-	course_length INT,
+	course_type_ID INT NOT NULL FOREIGN KEY REFERENCES Course_Types(course_type_ID),
+	course_number INT,
+	course_length_weeks INT,
+	start_date DATE,
 	trainer_ID INT NOT NULL FOREIGN KEY REFERENCES Trainers(trainer_ID)
 );
 
@@ -33,7 +42,6 @@ CREATE TABLE Talent_Team(
 	first_name VARCHAR(30),
 	last_name VARCHAR(30),
 );
-
 
 -- Candidates table
 DROP TABLE IF EXISTS Candidates
@@ -50,8 +58,6 @@ CREATE TABLE Candidates (
 	phone VARCHAR(30),
 	university VARCHAR(150),
 	degree VARCHAR(10),
-	invite_date DATE, -- in original combine the date columns (invited_date and months) 
-	invited_by VARCHAR(30),
 	talent_person_ID INT FOREIGN KEY REFERENCES Talent_Team(talent_person_ID), -- in original is invited_by
 	course_ID INT FOREIGN KEY REFERENCES Courses(course_ID),
 	---academy_ID INT FOREIGN KEY REFERENCES Academies(academy_ID),
@@ -112,7 +118,7 @@ CREATE TABLE Interview_Assesment (
     self_development VARCHAR(10),
     financial_support VARCHAR(10),
     result VARCHAR(10),
-    course_interest VARCHAR(40),
+	course_type_ID INT NOT NULL FOREIGN KEY REFERENCES Course_Types(course_type_ID),
     academy_ID INT NOT NULL FOREIGN KEY REFERENCES Academies(academy_ID),
     interview_date DATE
 );
@@ -226,6 +232,7 @@ DROP TABLE Technologies
 DROP TABLE Candidates
 DROP TABLE Talent_Team
 DROP TABLE Courses
+DROP TABLE Course_Types
 DROP TABLE Trainers
 DROP TABLE Academies
 */
