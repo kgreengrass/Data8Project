@@ -58,9 +58,8 @@ CREATE TABLE Candidates (
 	phone VARCHAR(30),
 	university VARCHAR(150),
 	degree VARCHAR(10),
-	talent_person_ID INT FOREIGN KEY REFERENCES Talent_Team(talent_person_ID), -- in original is invited_by
 	course_ID INT FOREIGN KEY REFERENCES Courses(course_ID),
-	---academy_ID INT FOREIGN KEY REFERENCES Academies(academy_ID),
+	talent_person_ID INT FOREIGN KEY REFERENCES Talent_Team(talent_person_ID), -- in original is invited_by
 	CONSTRAINT chk_gender CHECK (gender IN ('Male', 'Female'))
 );
 
