@@ -1,4 +1,4 @@
-from patience.json_class import ReadTransformJson
+from json_class import ReadTransformJson
 import pandas as pd
 import pytest
 
@@ -17,4 +17,3 @@ def test_ReadTransformJson():
 
 
 
-# ReadTransformJson_test()
