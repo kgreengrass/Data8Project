@@ -49,3 +49,4 @@ def tech():
     df.columns=['TechName']
     df['TechID'] = np.arange(len(df))
     return df
+
