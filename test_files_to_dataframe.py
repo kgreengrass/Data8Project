@@ -51,17 +51,17 @@ class TestFileToDF():
                                   'present.max': [32, 32],
                                   'academy': ['Birmingham', 'London'],
                                   'date': [date1, date2]}, index=[0,0])
-        assert assert_frame_equal(df_test, df_result)
+        assert df_test.equals(df_result) #assert_frame_equal(df_test, df_result)
 
-    # def test_dataframe_csv(self):
-    #     df_test = self.testing_csv_to_df.dataframecsv()
-    #     df_result = pd.DataFrame({"name": ["Loree Abbot", "Tedmund Emanulsson", "Bobine Brodie", "Guilbert Leet",
-    #                                        "Bren Tomei", "Ron Fincke"],
-    #                               "trainer": ["Elly Kelly", "Elly Kelly", "Elly Kelly", "Shaunie Hovis",
-    #                                           "Shaunie Hovis", "Shaunie Hovis"],
-    #                               "IH_W1": [5, 4, 1, 4, 3, 4],
-    #                               "IS_W1": [4, 2, 3, 6, 5, 7],
-    #                               "PV_W1": [5.0, 3.0, 5.0, "NaN", "NaN", "NaN"],
-    #                               "PS_W1": [4.0, 6.0, 1.0, "NaN", "NaN", "NaN"]})
-    #     assert assert_frame_equal(df_test, df_result)
+    def test_dataframe_csv(self):
+        df_test = self.testing_csv_to_df.dataframecsv()
+        df_result = pd.DataFrame({"name": ["Loree Abbot", "Tedmund Emanulsson", "Bobine Brodie", "Guilbert Leet",
+                                           "Bren Tomei", "Ron Fincke"],
+                                  "trainer": ["Elly Kelly", "Elly Kelly", "Elly Kelly", "Shaunie Hovis",
+                                              "Shaunie Hovis", "Shaunie Hovis"],
+                                  "IH_W1": [5, 4, 1, 4, 3, 4],
+                                  "IS_W1": [4, 2, 3, 6, 5, 7],
+                                  "PV_W1": [5, 3, 5, 7, 6, 7],
+                                  "PS_W1": [4, 6, 1, 9, 8, 8]}, index=[0,1,2,0,1,2])
+        assert df_test.equals(df_result)  #assert_frame_equal(df_test, df_result)
 
