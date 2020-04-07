@@ -20,7 +20,7 @@ def candidate_weaknesses():  # returns dataframe of candidate id and weakness id
 def candidate_extract(z):
     df = link_files.merge('TransformedFiles')
     df = df[['CandidateID', z]]
-    list = []
+    list1 = []
     for index, row in df.iterrows():
         x = row[z]
         chars = ["'", "[", "]"]
@@ -30,7 +30,7 @@ def candidate_extract(z):
         for x in row[z]:
             x = x.strip()
             y = row['CandidateID']
-            list.append([y, x])  # appends each individual strength with it's matching candidate ID to a list
-    df = pd.DataFrame(list)
+            list1.append([y, x])  # appends each individual strength with it's matching candidate ID to a list
+    df = pd.DataFrame(list1)
     return df
 
