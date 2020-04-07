@@ -9,5 +9,3 @@ def phonenoformat(bucket, folder, col):
     for c in chars:
         df[col] = df[col].str.replace(c,'')
     return df
-
-print(phonenoformat('data8-engineering-project', 'Talent','phone_number'))
