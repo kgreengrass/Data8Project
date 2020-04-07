@@ -24,3 +24,9 @@ def splitname(name):  # takes in the name column of a dataframe
             name_list.append(inputspace(row))  # adds the name from the manually choosing space to split function
     namedf = pd.DataFrame(name_list)  # creates a dataframe from the name list created above
     return namedf  # returns a dataframe of first and last name
+
+
+interview_df = pd.read_csv('C:/Users/TECH-W80.LT-RICH-W80/Desktop/cleaning dev/interview_notes1.csv')
+df = pd.DataFrame([['Casian Pavel'], ['Anna Maia Caruso']],
+                  columns=['name'])
+print(splitname(interview_df.name))
