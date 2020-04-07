@@ -22,4 +22,3 @@ def dateformat(bucket, folder, col):   # takes in the bucket and folder and crea
     df[col] = pd.to_datetime(df[col])
     return df
 
-print(dateformat('data8-engineering-project', 'Talent', 'dob'))
