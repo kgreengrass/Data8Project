@@ -25,7 +25,6 @@ def strengths_table_import():
         # print(index,row) #Test option
         cursor.execute("INSERT INTO SpartaDB.dbo.Strengths (strength_ID, strength_name) VALUES (?,?)", row['StrengthID'], row['StrengthName'])
 
-
     docker_sparta.commit()
 
 def weaknesses_table_import():
