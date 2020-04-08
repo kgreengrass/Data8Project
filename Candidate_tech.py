@@ -24,4 +24,3 @@ def candidate_tech():
     df.drop(['TechName', 'namecon', 'name'], axis=1, inplace=True) # drops unneeded columns
     return df
 
-print(candidate_tech())

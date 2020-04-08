@@ -172,3 +172,5 @@ def import_all_but_tech():
     candidates_table_import()
     candidate_strengths_table_import()
     candidate_weaknesses_table_import()
+
+import_all_but_tech()
