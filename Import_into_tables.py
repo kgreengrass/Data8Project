@@ -174,3 +174,7 @@ def import_all_but_tech():
     candidate_weaknesses_table_import()
 
 import_all_but_tech()
+
+# these are run separately because they take a long time to run
+technologies_table_import()
+candidate_tech_table_import()
